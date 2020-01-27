@@ -28,4 +28,16 @@ public class TrainerServiceImpl implements TrainerService {
         return trainerRepository.save(trainer);
     }
 
+    @Override
+    public Trainer updateTrainer(Trainer trainer, String name) {
+        Trainer trainerToUpdate = getTrainer(name);
+        trainerToUpdate.setTeam(trainer.getTeam());
+        return trainerRepository.save(trainerToUpdate);
+    }
+
+    @Override
+    public void deleteTrainer(String name) {
+        trainerRepository.deleteById(name);
+    }
+
 }
